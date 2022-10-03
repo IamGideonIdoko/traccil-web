@@ -1,4 +1,4 @@
-schema: http://localhost:5000/api/graphql
+schema: ${NEXT_PUBLIC_GRAPHQL_BASE_URL:"http://localhost:5000/api/graphql"}
 documents: './graphql/documents/**/*.graphql'
 generates:
   ./graphql/generated-apollo.ts:
