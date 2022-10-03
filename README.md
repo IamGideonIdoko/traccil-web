@@ -24,3 +24,6 @@ This project's dependencies are strictly managed by [Yarn](https://yarnpkg.com).
 
 > NB: Linting checks run before every commit. Do not remove configuration files.
 
+## Useful References
+
+- [Commit lint reference rules](https://commitlint.js.org/#/reference-rules)
