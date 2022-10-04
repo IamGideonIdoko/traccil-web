@@ -6,7 +6,11 @@ module.exports = {
     './node_modules/flowbite-react/**/*.js',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'onboard-pattern': "url('/assets/img/OnboardPattern.png')",
+      },
+    },
   },
   plugins: [require('flowbite/plugin')],
 };
