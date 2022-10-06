@@ -1,8 +1,7 @@
 import React from 'react';
-import OnboardLayout from '../../components/layouts/OnboardLayout';
 
 const Login: React.FC = () => {
-  return <OnboardLayout>Client login page</OnboardLayout>;
+  return <div>Client page</div>;
 };
 
 export default Login;
