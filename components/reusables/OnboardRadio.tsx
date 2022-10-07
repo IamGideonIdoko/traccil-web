@@ -20,8 +20,6 @@ const OnboardRadio: React.FC<
   checked: isChecked,
   ...restProps
 }) => {
-  Reflect.deleteProperty(restProps, 'className');
-  Reflect.deleteProperty(restProps, 'style');
   const [, forceUpdate] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const isInputFocused = isServer ? false : inputRef.current === window.document.activeElement;
@@ -63,7 +61,14 @@ const OnboardRadio: React.FC<
             icon === 'client' && <OnboardClientSvg className="inline-block" />
           )}
         </span>
-        <span className="mt-[20px]">{label}</span>
+        <span className="mt-[20px]">
+          {label ||
+            (icon === 'client'
+              ? `I am a client, in need of a worker`
+              : icon === 'worker'
+              ? 'I am a worker, in need of a client'
+              : '')}
+        </span>
       </label>
       <input
         {...restProps}
