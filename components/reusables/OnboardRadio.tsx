@@ -50,7 +50,7 @@ const OnboardRadio: FC<
     }
     forceUpdate((prev) => !prev);
   };
- 
+
   return (
     <div className="inline-block w-[250px] max-w-full relative rounded-xl overflow-hidden">
       <label

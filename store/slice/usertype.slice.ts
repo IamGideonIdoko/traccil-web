@@ -2,11 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface IUser {
   user: string;
-  isRadioSelected: boolean
+  isRadioSelected: boolean;
 }
+
 const initialState: IUser = {
   user: '',
-  isRadioSelected: true
+  isRadioSelected: true,
 };
 
 const userTypeSlice = createSlice({
