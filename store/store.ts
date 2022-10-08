@@ -1,12 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
-import { combineReducers } from 'redux';
 import { createWrapper } from 'next-redux-wrapper';
 import counterReducer from './slice/counter.slice';
+import usertypeSlice from './slice/usertype.slice';
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+import thunk from 'redux-thunk';
 // import { loadState } from '../helper';
 
 export const rootReducer = combineReducers({
   counter: counterReducer,
+  usertype: usertypeSlice,
 });
 
 const store = configureStore({

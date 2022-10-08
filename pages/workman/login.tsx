@@ -1,14 +1,14 @@
 import OnboardAuthBtn from '../../components/reusables/OnboardAuthBtn';
 import OnboardLayout from '../../components/layouts/OnboardLayout';
-import Button from '../../components/reusables/Button';
-import Input from '../../components/reusables/Input';
+import Input from '../../components/reusables/OnboardInput';
+import Button from '../../components/reusables/OnboardButton';
 import { NextPage } from 'next';
 import Link from 'next/link';
 
-const Admin: NextPage = () => {
+const LoginWorkman: NextPage = () => {
   return (
     <OnboardLayout>
-      <div className="flex flex-col items-center mx-auto w-full translate-y-1/4 space-y-4">
+      <div className="flex flex-col items-center mx-auto w-full relative top-[50%] translate-y-[-50%] space-y-4">
         <h1 className="text-center font-semibold text-2xl lg:text-3xl">Log in to OgaRepair</h1>
         <div className="flex flex-col justify-center items-center w-full xl:w-7/12 lg:flex-row lg:space-x-5">
           <OnboardAuthBtn icon="google" />
@@ -31,4 +31,4 @@ const Admin: NextPage = () => {
   );
 };
 
-export default Admin;
+export default LoginWorkman;

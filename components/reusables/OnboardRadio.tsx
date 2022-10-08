@@ -1,14 +1,16 @@
-import React, { useRef, useState } from 'react';
-import { css } from '@emotion/css';
-import { isServer } from '../../helper/general.helper';
+import React, { DetailedHTMLProps, FC, InputHTMLAttributes, useRef, useState } from 'react';
 import OnboardClientSvg from '../../public/assets/svg/onboardclienticon.svg';
 import OnboardWorkerSvg from '../../public/assets/svg/onboardworkericon.svg';
+import { isServer } from '../../helper/general.helper';
+import { css } from '@emotion/css';
+import { useAppDispatch } from '../../hooks/store.hook';
+import { userType } from '../../store/slice/usertype.slice';
 
-const OnboardRadio: React.FC<
-  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
+const OnboardRadio: FC<
+  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
     label: string;
     icon: 'client' | 'worker';
-    id: string;
+    id: 'client' | 'workman';
   }
 > = ({
   id,
@@ -20,6 +22,7 @@ const OnboardRadio: React.FC<
   checked: isChecked,
   ...restProps
 }) => {
+  const dispatch = useAppDispatch();
   const [, forceUpdate] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const isInputFocused = isServer ? false : inputRef.current === window.document.activeElement;
@@ -30,6 +33,8 @@ const OnboardRadio: React.FC<
       onChangeFunc(e);
     }
     forceUpdate((prev) => !prev);
+    // Payload should be Props.id
+    dispatch(userType(id));
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -45,14 +50,14 @@ const OnboardRadio: React.FC<
     }
     forceUpdate((prev) => !prev);
   };
-
+ 
   return (
     <div className="inline-block w-[250px] max-w-full relative rounded-xl overflow-hidden">
       <label
         htmlFor={id}
-        className={`border rounded-xl w-full h-full p-[22px] inline-flex text-center flex-col justify-center items-center ${
-          isInputChecked || isInputFocused ? 'border-[color:var(--primary-color)]' : ''
-        } ${isInputChecked ? 'border-2' : ''}`}
+        className={`border-2 rounded-xl w-full h-full p-[22px] inline-flex text-center flex-col justify-center items-center cursor-pointer ${
+          isInputChecked && isInputFocused ? 'border-[color:var(--primary-color)]' : ''
+        } ${isInputChecked && isInputFocused ? 'border-2' : ''}`}
       >
         <span>
           {icon === 'worker' ? (
@@ -61,7 +66,7 @@ const OnboardRadio: React.FC<
             icon === 'client' && <OnboardClientSvg className="inline-block" />
           )}
         </span>
-        <span className="mt-[20px]">
+        <span className="mt-[20px] ">
           {label ||
             (icon === 'client'
               ? `I am a client, in need of a worker`
@@ -75,7 +80,7 @@ const OnboardRadio: React.FC<
         style={{ color: 'var(--primary-color)' }}
         ref={inputRef}
         type="radio"
-        name=""
+        name="users"
         id={id}
         onChange={handleChange}
         onFocus={handleFocus}

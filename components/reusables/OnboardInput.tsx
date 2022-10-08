@@ -2,7 +2,7 @@ import EyeVisible from '../../public/assets/svg/PasswordIcon.svg';
 import InputProps from '../../interfaces/input.interface';
 import React, { useState } from 'react';
 
-const Input: React.FC<InputProps> = ({ type, name, placeholder }) => {
+const OnboardInput: React.FC<InputProps> = ({ type, name, placeholder }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -19,7 +19,7 @@ const Input: React.FC<InputProps> = ({ type, name, placeholder }) => {
         <label
           htmlFor="password"
           className="absolute right-0 mt-4 mr-3 cursor-pointer hover:text-blue-500"
-          onClick={() => setShowPassword((prevState) => !prevState)}
+          onClick={() => setShowPassword((prev) => !prev)}
         >
           <EyeVisible />
         </label>
@@ -28,4 +28,4 @@ const Input: React.FC<InputProps> = ({ type, name, placeholder }) => {
   );
 };
 
-export default Input;
+export default OnboardInput;
