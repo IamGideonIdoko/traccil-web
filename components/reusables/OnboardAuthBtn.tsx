@@ -11,7 +11,7 @@ const OnboardAuthBtn: React.FC<
     <button
       {...restProps}
       type="button"
-      className={`border border-[color:var(--primary-color)] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1 text-center mr-2 mb-2 hover:bg-gray-100 inline-flex justify-center items-center ${
+      className={`w-full lg:w-fit xl:w-7/12 border border-[color:var(--primary-color)] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1 text-center mr-2 mb-2 hover:bg-gray-100 inline-flex justify-center items-center ${
         restProps?.className ?? ''
       }`.trim()}
     >
