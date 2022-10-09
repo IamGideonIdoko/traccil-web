@@ -1,7 +1,7 @@
-import React from 'react';
+import type { NextPage } from 'next';
 
-const Login: React.FC = () => {
-  return <div>Client page</div>;
+const ClientLogin: NextPage = () => {
+  return <div>Client login page</div>;
 };
 
-export default Login;
+export default ClientLogin;

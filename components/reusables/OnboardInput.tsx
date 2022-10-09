@@ -1,17 +1,18 @@
+import { useState } from 'react';
+import type { FC } from 'react';
 import EyeVisible from '../../public/assets/svg/PasswordIcon.svg';
-import InputProps from '../../interfaces/input.interface';
-import React, { useState } from 'react';
+import type { OnboardInputProps } from '../../interfaces/props.interface';
 
-const OnboardInput: React.FC<InputProps> = ({ type, name, placeholder }) => {
+const OnboardInput: FC<OnboardInputProps> = ({ type, name, placeholder }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="relative">
+    <div className="relative w-[470px] max-w-full mx-auto">
       <input
         className="rounded-lg w-full py-3 hover:border-1 hover:border-blue-500"
         required
         id={type}
-        type={type === 'password' ? (showPassword ? 'text' : type) : type}
+        type={showPassword ? 'text' : 'password'}
         name={name}
         placeholder={placeholder}
       />

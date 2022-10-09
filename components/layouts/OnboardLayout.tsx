@@ -1,8 +1,8 @@
+import type { FC } from 'react';
 import Image from 'next/image';
-import React from 'react';
 import type { OnboardLayoutProps } from '../../interfaces/props.interface';
 
-const OnboardLayout: React.FC<OnboardLayoutProps> = ({ children }) => {
+const OnboardLayout: FC<OnboardLayoutProps> = ({ children }) => {
   return (
     <div
       className={`w-screen h-screen bg-[color:var(--primary-color)] flex bg-onboard-pattern bg-[length:23rem] bg-repeat`}

@@ -1,19 +1,20 @@
-import { Button } from 'flowbite-react';
 import type { NextPage } from 'next';
-import { useAppDispatch, useAppSelector } from '../hooks/store.hook';
-import { decrement, increment } from '../store/slice/counter.slice';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
-  const counter = useAppSelector((state) => state.counter.value);
-  const dispatch = useAppDispatch();
   return (
-    <div>
-      <h1 className="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600 text-center">
-        Oga Repair Landing Page: {counter}
+    <div className="h-screen w-screen flex justify-center items-center flex-col">
+      <h1 className="leading-tight text-5xl mt-0 mb-2 text-[color:var(--primary-color)] text-center uppercase font-bold">
+        OgaRepair
       </h1>
-      <div className="flex justify-center gap-2">
-        <Button onClick={() => dispatch(increment())}>Increment</Button>
-        <Button onClick={() => dispatch(decrement())}>Decrement</Button>
+      <div className="flex gap-4">
+        <Link href="/login">
+          <a className="hover:underline">Log in</a>
+        </Link>
+        <span className="text-gray-400">|</span>
+        <Link href="/signup">
+          <a className="hover:underline">Sign up</a>
+        </Link>
       </div>
     </div>
   );
