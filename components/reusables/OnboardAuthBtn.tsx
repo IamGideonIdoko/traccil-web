@@ -1,9 +1,9 @@
-import React from 'react';
+import type { FC, DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import GoogleIcon from '../../public/assets/svg/google.svg';
 import FacebookIcon from '../../public/assets/svg/facebook.svg';
 
-const OnboardAuthBtn: React.FC<
-  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+const OnboardAuthBtn: FC<
+  DetailedHTMLProps<InputHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
     icon: 'google' | 'facebook';
   }
 > = ({ children, icon, ...restProps }) => {

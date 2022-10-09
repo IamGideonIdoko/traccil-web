@@ -5,3 +5,14 @@ interface LayoutBaseProps {
 }
 
 export type OnboardLayoutProps = LayoutBaseProps;
+
+export interface OnboardInputProps {
+  type: string;
+  name: string;
+  placeholder: string;
+}
+
+export interface OnboardButtonProps {
+  type: string;
+  children: React.ReactNode;
+}

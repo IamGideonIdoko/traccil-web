@@ -1,16 +1,15 @@
-import React, { DetailedHTMLProps, FC, InputHTMLAttributes, useRef, useState } from 'react';
+import { useState, useRef } from 'react';
+import type { DetailedHTMLProps, FC, InputHTMLAttributes, ChangeEvent, FocusEvent } from 'react';
 import OnboardClientSvg from '../../public/assets/svg/onboardclienticon.svg';
 import OnboardWorkerSvg from '../../public/assets/svg/onboardworkericon.svg';
 import { isServer } from '../../helper/general.helper';
 import { css } from '@emotion/css';
-import { useAppDispatch } from '../../hooks/store.hook';
-import { userType } from '../../store/slice/usertype.slice';
 
 const OnboardRadio: FC<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
     label: string;
     icon: 'client' | 'worker';
-    id: 'client' | 'workman';
+    id: 'client' | 'worker';
   }
 > = ({
   id,
@@ -22,29 +21,26 @@ const OnboardRadio: FC<
   checked: isChecked,
   ...restProps
 }) => {
-  const dispatch = useAppDispatch();
   const [, forceUpdate] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const isInputFocused = isServer ? false : inputRef.current === window.document.activeElement;
   const isInputChecked = isChecked || inputRef.current?.checked;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (onChangeFunc && typeof onChangeFunc === 'function') {
       onChangeFunc(e);
     }
     forceUpdate((prev) => !prev);
-    // Payload should be Props.id
-    dispatch(userType(id));
   };
 
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+  const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
     if (onFocusFunc && typeof onFocusFunc === 'function') {
       onFocusFunc(e);
     }
     forceUpdate((prev) => !prev);
   };
 
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
     if (onBlurFunc && typeof onBlurFunc === 'function') {
       onBlurFunc(e);
     }
@@ -52,12 +48,12 @@ const OnboardRadio: FC<
   };
 
   return (
-    <div className="inline-block w-[250px] max-w-full relative rounded-xl overflow-hidden">
+    <div className={`inline-block w-[250px] max-w-full relative rounded-xl overflow-hidden`}>
       <label
         htmlFor={id}
         className={`border-2 rounded-xl w-full h-full p-[22px] inline-flex text-center flex-col justify-center items-center cursor-pointer ${
-          isInputChecked && isInputFocused ? 'border-[color:var(--primary-color)]' : ''
-        } ${isInputChecked && isInputFocused ? 'border-2' : ''}`}
+          isInputChecked || isInputFocused ? 'border-[color:var(--primary-color)]' : 'border-gray-100'
+        } ${isInputChecked ? 'border-2' : ''}`}
       >
         <span>
           {icon === 'worker' ? (
@@ -66,7 +62,7 @@ const OnboardRadio: FC<
             icon === 'client' && <OnboardClientSvg className="inline-block" />
           )}
         </span>
-        <span className="mt-[20px] ">
+        <span className="mt-[20px]">
           {label ||
             (icon === 'client'
               ? `I am a client, in need of a worker`
@@ -80,7 +76,7 @@ const OnboardRadio: FC<
         style={{ color: 'var(--primary-color)' }}
         ref={inputRef}
         type="radio"
-        name="users"
+        name="onboardradio"
         id={id}
         onChange={handleChange}
         onFocus={handleFocus}
