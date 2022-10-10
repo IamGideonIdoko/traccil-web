@@ -7,7 +7,7 @@ import OnboardRadio from '../components/reusables/OnboardRadio';
 import OnboardButton from '../components/reusables/OnboardButton';
 
 const Signup: NextPage = () => {
-  const [selectedUserType, setSelectedUsertype] = useState<'client' | 'worker' | undefined>();
+  const [selectedUserType, setSelectedUsertype] = useState<'client' | 'worker' | undefined>('client');
 
   const handleUserTypeSelect = (e: ChangeEvent<HTMLInputElement>) => {
     const { id } = e.target as typeof e.target & { id: 'client' | 'worker' };
@@ -21,12 +21,14 @@ const Signup: NextPage = () => {
         <div className="flex flex-col justify-center space-y-3 lg:space-y-0 items-center w-full xl:w-7/12 lg:flex-row lg:space-x-5 mb-8">
           <OnboardRadio
             onChange={handleUserTypeSelect}
+            checked={selectedUserType === 'client'}
             label="I am a client, in need of a worker"
             icon="client"
             id="client"
           />
           <OnboardRadio
             onChange={handleUserTypeSelect}
+            checked={selectedUserType === 'worker'}
             label="I am a worker, looking to connect with a client"
             icon="worker"
             id="worker"
