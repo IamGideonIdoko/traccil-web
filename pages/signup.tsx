@@ -7,7 +7,7 @@ import OnboardRadio from '../components/reusables/OnboardRadio';
 import OnboardButton from '../components/reusables/OnboardButton';
 
 const Signup: NextPage = () => {
-  const [selectedUserType, setSelectedUsertype] = useState<'client' | 'worker' | undefined>();
+  const [selectedUserType, setSelectedUsertype] = useState<'client' | 'worker' | undefined>('client');
 
   const handleUserTypeSelect = (e: ChangeEvent<HTMLInputElement>) => {
     const { id } = e.target as typeof e.target & { id: 'client' | 'worker' };
