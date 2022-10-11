@@ -9,9 +9,9 @@ const ClientSignup: NextPage = () => {
   return (
     <OnboardLayout>
       <div className="flex flex-col items-center mx-auto w-full relative top-[50%] translate-y-[-50%] space-y-3">
-        <h1 className="text-center font-semibold text-2xl lg:text-3xl mb-[10px]">Sign up to connect with clients</h1>
+        <h1 className="text-center font-semibold text-2xl lg:text-3xl mb-[10px]">Sign up to hire workers</h1>
         <p className="text-center text-sm text-gray-700 !mb-3">
-          Looking to hire clients?{' '}
+          Looking for clients?{' '}
           <Link href="/worker/signup">
             <a className="text-blue-500 hover:text-blue-700 hover:underline">Sign up as a worker</a>
           </Link>
