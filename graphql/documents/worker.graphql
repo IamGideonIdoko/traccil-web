@@ -1,7 +1,4 @@
-""" 
-===== QUERIES =====
-All worker entity queries should go here
-"""
+# QUERIES: All worker entity queries should go here
 
 
 
@@ -10,10 +7,8 @@ All worker entity queries should go here
 
 
 
-""" 
-===== MUTATIONS =====
-All worker entity mutations should go here
-"""
+
+# MUTATIONS: All worker entity mutations should go here
 
 # Register a worker
 mutation RegisterWorker($worker: RegisterWorkerInput!) {

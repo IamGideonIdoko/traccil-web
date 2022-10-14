@@ -6,3 +6,12 @@ generates:
       - typescript
       - typescript-operations
       - typescript-react-apollo
+    config:
+      scalars:
+        DateTime: Date
+        Date: Date
+        JSON: string
+        UUID: string
+        EmailAddress: string
+        PhoneNumber: string
+        JWT: string

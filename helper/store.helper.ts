@@ -28,7 +28,6 @@ const decryptStore = (cipherState: string): PlainData | null => {
 };
 
 export const loadState = (): PreloadedState<RootReducer> => {
-  console.log('called load store');
   const cipherState = !isServer && localStorage.getItem(constants.reduxStorePersistenceKey);
   if (!cipherState) return {};
   const plainState = decryptStore(cipherState);
@@ -46,7 +45,6 @@ const saveState = () => {
  * subscribe to store changes
  */
 export const subscribeToState = () => {
-  console.log('called store subscribe!');
   // save state initially
   // saveState();
   store.subscribe(
