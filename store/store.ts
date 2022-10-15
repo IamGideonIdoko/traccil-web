@@ -3,9 +3,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import counterReducer from './slice/counter.slice';
+import authReducer from './slice/auth.slice';
 import { loadState } from '../helper/store.helper';
 
 export const rootReducer = combineReducers({
+  auth: authReducer,
   counter: counterReducer,
 });
 
