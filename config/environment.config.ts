@@ -1,7 +1,4 @@
-import { config } from 'dotenv';
-import { IEnvConfig } from '../interfaces/config.interface';
-
-config();
+import type { IEnvConfig } from '../interfaces/config.interface';
 
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'development';
 

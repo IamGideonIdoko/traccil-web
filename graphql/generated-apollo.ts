@@ -392,22 +392,93 @@ export type WorkerService = {
   worker: Worker;
 };
 
+export type LoginWorkerQueryVariables = Exact<{
+  loginInput: LoginInput;
+}>;
+
+
+export type LoginWorkerQuery = { __typename?: 'Query', loginWorker?: { __typename?: 'ReturnedRegisteredWorker', accessToken: string, refreshToken: string, worker: { __typename?: 'RegisteredWorker', id: string, name: string, email: string, emailVerified?: boolean | null, gender?: Gender | null, joinedDate: Date, address?: string | null, country?: string | null, phone?: string | null, phoneVerified?: boolean | null, avatar?: any | null, dob?: Date | null, bio?: string | null, verified?: boolean | null } } | null };
+
 export type RegisterWorkerMutationVariables = Exact<{
   worker: RegisterWorkerInput;
 }>;
 
 
-export type RegisterWorkerMutation = { __typename?: 'Mutation', registerWorker?: { __typename?: 'ReturnedRegisteredWorker', accessToken: string, refreshToken: string, worker: { __typename?: 'RegisteredWorker', name: string, email: string } } | null };
+export type RegisterWorkerMutation = { __typename?: 'Mutation', registerWorker?: { __typename?: 'ReturnedRegisteredWorker', accessToken: string, refreshToken: string, worker: { __typename?: 'RegisteredWorker', id: string, name: string, email: string, emailVerified?: boolean | null, gender?: Gender | null, joinedDate: Date, address?: string | null, country?: string | null, phone?: string | null, phoneVerified?: boolean | null, avatar?: any | null, dob?: Date | null, bio?: string | null, verified?: boolean | null } } | null };
 
 
+export const LoginWorkerDocument = gql`
+    query LoginWorker($loginInput: LoginInput!) {
+  loginWorker(loginInput: $loginInput) {
+    accessToken
+    refreshToken
+    worker {
+      id
+      name
+      email
+      emailVerified
+      gender
+      joinedDate
+      address
+      country
+      phone
+      phoneVerified
+      avatar
+      dob
+      bio
+      verified
+    }
+  }
+}
+    `;
+
+/**
+ * __useLoginWorkerQuery__
+ *
+ * To run a query within a React component, call `useLoginWorkerQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLoginWorkerQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLoginWorkerQuery({
+ *   variables: {
+ *      loginInput: // value for 'loginInput'
+ *   },
+ * });
+ */
+export function useLoginWorkerQuery(baseOptions: Apollo.QueryHookOptions<LoginWorkerQuery, LoginWorkerQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LoginWorkerQuery, LoginWorkerQueryVariables>(LoginWorkerDocument, options);
+      }
+export function useLoginWorkerLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LoginWorkerQuery, LoginWorkerQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LoginWorkerQuery, LoginWorkerQueryVariables>(LoginWorkerDocument, options);
+        }
+export type LoginWorkerQueryHookResult = ReturnType<typeof useLoginWorkerQuery>;
+export type LoginWorkerLazyQueryHookResult = ReturnType<typeof useLoginWorkerLazyQuery>;
+export type LoginWorkerQueryResult = Apollo.QueryResult<LoginWorkerQuery, LoginWorkerQueryVariables>;
 export const RegisterWorkerDocument = gql`
     mutation RegisterWorker($worker: RegisterWorkerInput!) {
   registerWorker(worker: $worker) {
     accessToken
     refreshToken
     worker {
+      id
       name
       email
+      emailVerified
+      gender
+      joinedDate
+      address
+      country
+      phone
+      phoneVerified
+      avatar
+      dob
+      bio
+      verified
     }
   }
 }

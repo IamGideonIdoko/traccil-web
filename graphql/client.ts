@@ -1,5 +1,6 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 import constants from '../config/constants.config';
+import envConfig from '../config/environment.config';
 
 const client = new ApolloClient({
   link: new HttpLink({
@@ -9,6 +10,7 @@ const client = new ApolloClient({
     },
   }),
   cache: new InMemoryCache(),
+  connectToDevTools: !envConfig.isProduction,
 });
 
 export default client;

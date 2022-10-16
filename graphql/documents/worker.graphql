@@ -1,12 +1,28 @@
 # QUERIES: All worker entity queries should go here
 
-
-
-
-
-
-
-
+# Login a worker
+query LoginWorker($loginInput: LoginInput!) {
+  loginWorker(loginInput: $loginInput) {
+    accessToken
+    refreshToken
+    worker {
+      id
+      name
+      email
+      emailVerified
+      gender
+      joinedDate
+      address
+      country
+      phone
+      phoneVerified
+      avatar
+      dob
+      bio
+      verified
+    }
+  }
+}
 
 # MUTATIONS: All worker entity mutations should go here
 
@@ -16,8 +32,20 @@ mutation RegisterWorker($worker: RegisterWorkerInput!) {
     accessToken
     refreshToken
     worker {
+      id
       name
       email
+      emailVerified
+      gender
+      joinedDate
+      address
+      country
+      phone
+      phoneVerified
+      avatar
+      dob
+      bio
+      verified
     }
   }
 }
