@@ -1,4 +1,4 @@
-# OgaRepair Core Frontend
+# Traccil web app
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
@@ -8,8 +8,8 @@ This project's dependencies are strictly managed by [Yarn](https://yarnpkg.com).
 - Clone repo
 
   ```bash
-  [SSH] - git clone git@github.com:OgaRepair/ogarepair-core-frontend.git
-  [HTTP] - git clone https://github.com/OgaRepair/ogarepair-core-frontend.git
+  [SSH] - git clone git@github.com:IamGideonIdoko/traccil-web.git
+  [HTTP] - git clone https://github.com/IamGideonIdoko/traccil-web.git
   ```
 
 - Install dependencies
